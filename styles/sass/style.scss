@@ -1,0 +1,683 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "SctoGrotesk-bold";
+  src: url(/fonts/SctoGroteskA-Bold.woff2);
+}
+@font-face {
+  font-family: "SctoGrotesk-medium";
+  src: url(/fonts/SctoGroteskA-Medium.woff2);
+}
+@font-face {
+  font-family: "SctoGrotesk-regular";
+  src: url(/fonts/SctoGroteskA-Regular.woff2);
+}
+
+$SctoGrotesk-B: SctoGrotesk-bold;
+$SctoGrotesk-M: SctoGrotesk-medium;
+$SctoGrotesk-R: SctoGroteskl-regular;
+
+$primaryColor: #1c1c1e;
+$lightBlue: #0386ff;
+$maroon: #a03a3a;
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: none;
+}
+body {
+  position: relative;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+header {
+  top: 0;
+  height: 10%;
+  width: 100%;
+  font-family: $SctoGrotesk-B;
+  font-size: 0.8em;
+  @include flex();
+  position: fixed;
+  padding: 5%;
+
+  .logo {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .header-shop-link {
+    @include flex();
+    width: 100px;
+    cursor: pointer;
+
+    .hamburger {
+      width: 20px;
+      height: 10px;
+      flex-direction: column;
+      @include flex();
+      cursor: pointer;
+      .burger {
+        width: 100%;
+        height: 2px;
+        background: $primaryColor;
+      }
+    }
+  }
+}
+// HEADER ^
+
+.home-content {
+  margin-top: 70px;
+  height: 50%;
+  width: 100%;
+  @include flex();
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 50px 5% 5% 5%;
+
+  &-title {
+    font-family: $SctoGrotesk-B;
+    font-size: 1.5em;
+
+    span {
+      color: $lightBlue;
+      font-size: 0.4em;
+    }
+  }
+
+  &-content {
+    font-family: $SctoGrotesk-B;
+    font-size: 0.8em;
+    width: 150px;
+  }
+  .buttons {
+    @include flex();
+    width: 250px;
+
+    &-contact,
+    &-about {
+      button {
+        background: $lightBlue;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 20px;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-family: $SctoGrotesk-M;
+          font-size: 1em;
+        }
+      }
+    }
+    &-about {
+      button {
+        border: 2px solid $lightBlue;
+        background: none;
+
+        a {
+          color: $lightBlue;
+          font-family: $SctoGrotesk-B;
+        }
+      }
+    }
+  }
+}
+
+// HOME CONTENT ^
+
+.bottom-content {
+  height: 40%;
+  width: 100%;
+  position: relative;
+
+  .fish {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    img {
+      width: 75vw;
+    }
+  }
+  .home-camo {
+    position: absolute;
+    font-size: 35vw;
+    bottom: -10%;
+    left: 0;
+
+    font-family: "Roboto Condensed", sans-serif;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #dcdcdd, 2px -2px 0 #dcdcdd, -2px 2px 0 #dcdcdd,
+      -2px -2px 0 #dcdcdd, 2px 0px 0 #dcdcdd, 0px 2px 0 #dcdcdd,
+      -2px 0px 0 #dcdcdd, 0px -2px 0 #dcdcdd;
+  }
+}
+.blackboard {
+  display: none;
+}
+
+// buttom-content ^
+
+.shopping-list {
+  width: 100%;
+  background: #f8f0e7;
+  padding: 0 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  transform: translateX(100%);
+
+  .shopping-list-header {
+    height: 100px;
+    width: 100%;
+    top: 0;
+    background: #f8f0e7;
+    @include flex();
+
+    &-cart {
+      color: $maroon;
+      font-family: $SctoGrotesk-B;
+    }
+    &-close {
+      color: $primaryColor;
+      font-family: $SctoGrotesk-B;
+      cursor: pointer;
+    }
+  }
+
+  .shopping-list-title {
+    height: 150px;
+    font-family: $SctoGrotesk-B;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+  }
+
+  .selling-list {
+    padding: 30px 0;
+    width: 100%;
+    height: 20%;
+    .item-img {
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        max-height: 189px;
+        object-fit: cover;
+      }
+    }
+    .item-list-info {
+      color: $maroon;
+      font-family: $SctoGrotesk-M;
+
+      .item-list {
+        display: grid;
+        grid-template:
+          "head  head" 40px
+          "main section" 40px / 1fr 1fr;
+        grid-gap: 2px;
+        align-items: center;
+        &-title {
+          grid-area: head;
+          font-family: $SctoGrotesk-B;
+          font-size: 1.1em;
+        }
+        &-stock {
+          grid-area: main;
+          font-size: 0.8em;
+        }
+        &-price {
+          grid-area: section;
+          font-size: 0.8em;
+        }
+      }
+
+      .item-list-second {
+        padding: 20px 0;
+        width: 280px;
+        @include flex();
+
+        .add-items {
+          @include flex();
+          width: 150px;
+          .quantity {
+            font-size: 0.8em;
+          }
+          .add-remove {
+            @include flex();
+            button {
+              color: #fff;
+              border: none;
+              background: $maroon;
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+        .add-to-cart {
+          button {
+            background: #a03a3a;
+            border: none;
+            color: #fff;
+            font-family: $SctoGrotesk-M;
+            padding: 5px;
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+  }
+}
+.contact-form {
+  display: none;
+}
+
+//Phone landscape
+
+@media screen and (min-height: 280px) and (max-height: 540px) {
+  .home-content {
+    padding: 20px 5% 0 5%;
+  }
+  .bottom-content {
+    .fish {
+      img {
+        width: 40vw;
+      }
+    }
+    .home-camo {
+      font-size: 20vw;
+      left: 40%;
+    }
+  }
+  // shopping list
+  .shopping-list {
+    width: 100%;
+    background: #f8f0e7;
+    padding: 0 5%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    transform: translateX(100%);
+
+    .shopping-list-header {
+      height: 100px;
+      width: 100%;
+      top: 0;
+      background: #f8f0e7;
+      @include flex();
+    }
+
+    .shopping-list-title {
+      padding: 5% 0;
+      font-family: $SctoGrotesk-B;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+    }
+
+    .selling-list {
+      @include flex();
+      padding: 30px 0;
+      max-width: 100%;
+      height: 20%;
+      .item-img {
+        img {
+          max-width: 40vw;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-height: 320px) {
+  .shopping-list {
+    .shopping-list-title {
+      height: 80px;
+    }
+    .selling-list {
+      .item-img {
+        img {
+          width: 40vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-height: 768px) {
+  .home-content {
+    padding: 50px 5% 0 5%;
+    &-title {
+      font-size: 3em;
+    }
+
+    &-content {
+      font-size: 1.2em;
+      width: 250px;
+    }
+    .buttons {
+      width: 300px;
+
+      &-contact,
+      &-about {
+        button {
+          a {
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+  }
+  .bottom-content {
+    .fish {
+      img {
+        width: 40vw;
+      }
+    }
+    .home-camo {
+      bottom: -40%;
+      font-size: 30vw;
+      left: 0;
+    }
+  }
+}
+@media screen and (min-width: 320px) {
+  .selling-list {
+    max-width: 289px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .grid {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(289px, 1fr));
+  }
+}
+@media screen and (min-width: 900px) {
+  .home-content {
+    &-title {
+      font-size: 3em;
+    }
+
+    &-content {
+      font-size: 1em;
+      width: 300px;
+    }
+  }
+  .bottom-content {
+    .fish {
+      img {
+        width: 60vw;
+      }
+    }
+    .home-camo {
+      bottom: -40%;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  header {
+    z-index: 15;
+    .header-shop-link {
+      color: #fff;
+      position: relative;
+
+      .hamburger {
+        .burger {
+          background: #fff;
+        }
+      }
+    }
+  }
+  // HEADER ^
+  .blackboard {
+    display: block;
+    background: $primaryColor;
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+  .bottom-content {
+    .fish {
+      img {
+        width: 50vw;
+      }
+    }
+    .home-camo {
+      bottom: -40%;
+      font-size: 25vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1356px) {
+  .bottom-content {
+    .fish {
+      img {
+        width: 45vw;
+      }
+    }
+    .home-camo {
+      bottom: -40%;
+      font-size: 25vw;
+    }
+  }
+
+  .grid {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(289px, 1fr));
+  }
+  // ***************
+  .shopping-list {
+    .shopping-list-title {
+      padding-top: 0;
+      font-size: 4em;
+    }
+
+    .selling-list {
+      padding: 30px 0;
+      width: 100%;
+      height: 40%;
+      .item-img {
+        img {
+          width: 100%;
+          max-height: 400px;
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  header {
+    .logo {
+      width: 23%;
+      height: 60px;
+      @include flex();
+
+      &::after {
+        content: "SHARP TARGET AQUATIC RESOURCES";
+      }
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  .home-content {
+    &-title {
+      font-size: 4em;
+    }
+
+    &-content {
+      font-size: 1em;
+      width: 300px;
+    }
+  }
+  .bottom-content {
+    .fish {
+      img {
+        width: 40vw;
+      }
+    }
+    .home-camo {
+      bottom: -40%;
+      font-size: 25vw;
+    }
+  }
+}
+@media screen and (min-width: 1550px) {
+  .shopping-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5% 0 0;
+  }
+  .right-side-wrapper {
+    width: 70%;
+    padding-left: 5%;
+  }
+  .height {
+    height: 860px;
+    max-width: 446px;
+    position: fixed;
+    left: 0;
+    top: -100%;
+    height: 100%;
+    z-index: 25;
+  }
+  .div {
+    max-width: 446px;
+    height: 100vw;
+  }
+  .contact-form {
+    padding: 30% 5% 0 5%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    font-family: $SctoGrotesk-B;
+    position: relative;
+
+    &-title {
+      font-size: 4.5em;
+      color: $primaryColor;
+      text-align: center;
+    }
+    &-input {
+      input {
+        border: none;
+        background: transparent;
+        color: $primaryColor;
+        font-family: $SctoGrotesk-B;
+        font-size: 15px;
+        width: 80%;
+        outline: none;
+      }
+      .border {
+        width: 80%;
+        height: 2px;
+        border-radius: 5px;
+        background: $primaryColor;
+      }
+      label {
+        font-size: 0.8em;
+      }
+    }
+    &-content {
+      font-size: 1.4em;
+      width: 70%;
+    }
+    &-email {
+      display: flex;
+
+      p {
+        color: #fff;
+        background: $primaryColor;
+        border-radius: 5px;
+        text-align: center;
+        width: 65%;
+        padding: 5px;
+      }
+      button {
+        color: #fff;
+        background: $maroon;
+        border: none;
+        font-family: $SctoGrotesk-B;
+        width: 100px;
+        border-radius: 5px;
+        margin-left: 10px;
+      }
+    }
+    &-camo {
+      position: absolute;
+      font-size: 7.5em;
+      bottom: 0;
+      left: 5%;
+
+      font-family: "Roboto Condensed", sans-serif;
+      color: #ffffff;
+      text-shadow: 2px 2px 0 #dcdcdd, 2px -2px 0 #dcdcdd, -2px 2px 0 #dcdcdd,
+        -2px -2px 0 #dcdcdd, 2px 0px 0 #dcdcdd, 0px 2px 0 #dcdcdd,
+        -2px 0px 0 #dcdcdd, 0px -2px 0 #dcdcdd;
+    }
+    .form-flex {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      height: 60%;
+    }
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  header {
+    .logo {
+      width: 20%;
+    }
+  }
+  .home-content {
+    padding: 100px 5% 0 10%;
+  }
+  .bottom-content {
+    .home-camo {
+      font-size: 23vw;
+      left: 5%;
+    }
+  }
+}
