@@ -73,6 +73,7 @@ header {
     @include flex();
     width: 100px;
     cursor: pointer;
+    user-select: none;
 
     .hamburger {
       width: 20px;
@@ -80,10 +81,12 @@ header {
       flex-direction: column;
       @include flex();
       cursor: pointer;
+      user-select: none;
       .burger {
         width: 100%;
         height: 2px;
         background: $primaryColor;
+        user-select: none;
       }
     }
   }
@@ -209,6 +212,7 @@ header {
       color: $primaryColor;
       font-family: $SctoGrotesk-B;
       cursor: pointer;
+      user-select: none;
     }
   }
 
